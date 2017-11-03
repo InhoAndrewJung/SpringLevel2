@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 개발자 인스턴스 빈 생성 :: setter 주입 :: id, age값 == 단순 프라퍼티 값 주입-->
+<bean id="user01" class="spring.service.domain.User">
+	<property name="userId" value="01유저"/>
+	<property name="age" value="01"/>
+</bean>
+
+<!-- API 인스턴스 빈 생성 :: 생성자를 통한 값 주입 == 단순 프라퍼티 값 주입 -->
+<bean id="password" class="java.lang.String">
+	<constructor-arg value="7777"></constructor-arg>
+</bean>
+</beans>
