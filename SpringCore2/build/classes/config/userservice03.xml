@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+<!-- userservice02.properties 파일을 해당 설정문서로 와이어링 -->
+<context:property-placeholder location="classpath:config/userservice02.properties"/>
+<bean id="user08" class="spring.service.domain.User">
+	<property name="userId" value="${user.userId}"/>
+	<property name="age" value="${user.age}"/>
+	<property name="password" value="${user.password}"/>
+</bean>
+<!-- Util을 이용할 때에는 #{}로 접근한다.  -->
+<!-- 단순 값을 사용할때에는 context방식이 더 편하다. 
+	 하지만 완벽한 WIRING이 가능하다. ->객체의 값도 끌어들일 수 있다-->
+<util:properties location="classpath:config/userservice03.properties" id="userProperties"/>
+<bean id="user09" class="spring.service.domain.User">
+	<property name="userId" value="#{userProperties['user.userId']}"/>
+	<property name="age" value="#{userProperties['user.age']}"/>
+	<property name="password" value="#{userProperties['user.password']}"/>
+</bean>
+<!-- 완벽한 WIRING!! ->다른 빈(객체)에서 값을 가져와 사용할 수 있다. -->
+<!-- #{다른bean의 id.property name} -->
+<bean id="user10" class="spring.service.domain.User">
+	<property name="userId" value="10유저"/>
+	<property name="age" value="100"/>
+	<property name="password" value="1010"/>
+</bean>
+
+<bean id="user11" class="spring.service.domain.User">
+	<property name="userId" value="#{user10.userId}"/>
+	<property name="age" value="#{user10.age}"/>
+	<property name="password" value="#{user10.password}"/>
+</bean>
+
+<bean id="client" class="spring.service.domain.Client"/>
+<!-- properties파일에서 끌어오지 않을경우 util:properties 선언 없이 바로 사용 가능 -->
+<bean id="user12" class="spring.service.domain.User">
+	<property name="userId" value="#{client.info[0]}"/><!-- 조선 -->
+	<property name="age" value="#{client.age}"/><!-- 100 -->
+	<property name="password" value="#{client.info[1]}"/><!-- 의적 -->
+</bean>
+
+
+
+</beans>
+

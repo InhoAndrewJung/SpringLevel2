@@ -2,4 +2,5 @@
 <aop-reference-model>
 <aop-project name="SpringCore1"/>
 <aop-project name="SpringCore2"/>
+<aop-project name="SpringJDBC3"/>
 </aop-reference-model>

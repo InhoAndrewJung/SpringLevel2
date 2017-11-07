@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="config/dbconn.properties"/>
+	<typeAliases>
+		<typeAlias type="vo.MySawonVO" alias="sawon"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${pwd}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="mapper/mysawon.xml"/>		
+	</mappers>
+</configuration>
+
+<!--  
+
+SqlMapConfig.xml 파일은
+MyBatis 기술에서 가장 핵심이 되는 설정 문서이다.
+
+1. dbconn.properteis 파일이 와이어링. 
+2. environments 엘러먼트 안에서 디비관련 모든 정보를 등록
+3. mappers 엘러먼트 안에서 sqlCode 메타데이타와 연결
+4. vo와 연결...alias를 등록
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

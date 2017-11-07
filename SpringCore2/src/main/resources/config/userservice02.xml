@@ -20,11 +20,13 @@
 <!-- 간단한 상수값이나 DB서버의 정보 같은 값은 properties 파일을 외부화시켜 놓고
 	 이 파일을 설정문서에서 로딩해서 값을 빈에 입력해서 사용한다.
 	 이러한 기능을 가능케하는 스프링 라이브러리가 존재한다. 
-	 PropertyP-->
+	 PropertyPlaceholderConfigurer 
+	 setLocation()이 있다.
+	 이 안에 userservice02.properties의 경로와 함께 파일명을 입력-->
 <!-- <bean id="propertyConfigure" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 	<property name="location" value="config/userservice02.properties"></property>
 </bean> -->
-<context:property-placeholder location="classpath:config/userservice02.properties"/>
+<context:property-placeholder location="classpath:config/userservice02.properties"/><!-- 스키마를 이용, classpath:생략하지말것 -->
 <bean id="user08" class="spring.service.domain.User">
 	<!-- properties file을 설정문서에서 WIRING 했다면
 		파일의 resource에 접근하는 방법으로 EL 기법으로 사용할 수 있다. -->

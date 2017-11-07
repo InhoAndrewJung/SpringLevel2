@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ResultMap 사용법과 Dynamic Query 사용법-->
+<mapper namespace="User07">
+	<!--resultMap
+		::
+		select문일때는 resultMap을 권장한다.
+		select문에서 사용되는 명시적인 결과맵이다.
+		컬럼의 타입과 컬럼명, 필드명을 정확하게 구분해서
+		받아들일수 있도록 작성된 것이기 때문에
+		정확도가 높아서 사용하는것이 효율성이 더 높다.
+	  -->
+	<resultMap type="user" id="userSelectMap">
+		<result property="userId" column="user_id" jdbcType="VARCHAR"/>
+		<result property="userName" column="user_name" jdbcType="VARCHAR"/>
+		<result property="password" column="password" jdbcType="VARCHAR"/>
+		<result property="age" column="age" jdbcType="NUMERIC"/>
+		<result property="grade" column="grade" jdbcType="INTEGER"/>
+		<result property="regDate" column="reg_date" jdbcType="DATE"/>
+	</resultMap>
+	
+	
+	<!-- 
+		정적인 쿼리문 :: where절의 조건을 어떻게 주느냐에 따라서 나뉘어 질수 있다.
+		조건이 바뀔때마다 쿼리문이 계속적으로 작성되어져야 한다면
+		이것은 정적인 쿼리문에 해당된다.
+		동적인 쿼리문 :: where절의 조건을 동적으로 주는 쿼리문
+		                여러번 반복되지 않고 재사용성이 강한 쿼리문을 작성
+	 -->
+	<select id="getUser" parameterType="user" resultMap="userSelectMap">
+		SELECT
+		user_id, user_name, password, age, grade, reg_date
+		FROM users
+		WHERE user_id=#{userId}
+	</select>
+	
+	<!-- 동적인 쿼리문 ::
+		where절 뒷부분이 동적으로 가동된다.
+		userName이 홍길동이고
+		혹은
+		age가 30살인 데이타를 검색
+	  -->
+	<select id="getUserList01" parameterType="user" resultMap="userSelectMap">
+		SELECT
+		user_id, user_name, password, age, grade, reg_date
+		FROM users
+		<where>
+			<if test="userName != null">
+				user_name LIKE #{userName}
+			</if>
+			<if test="age != null">
+				OR age LIKE #{age}
+			</if>
+		</where>
+		ORDER BY user_id DESC
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

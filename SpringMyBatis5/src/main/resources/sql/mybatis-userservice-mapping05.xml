@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- CRUD를 심플하게 다 작성할 수 있다. 
+	ADD, UPDATE, DELETE, SELECT,,,
+	SELECT :: session.selectOne() : User, String
+	 		  session.selectList() : List
+	UPDATE :: session.update() : 1/0
+	DELETE :: session.delete() : 1/0
+	INSERT :: session.insert() : 1/0
+
+	insert(), update(), delete() 이건 반드시 쿼리문을 실행한후, 
+	session.commit()이 필요하다. 반드시 해줘야 한다.
+	
+	SpringMVC에서는 COMMIT기능이 이미 내장되어 있기 때문에
+	이때는 commit()을 하면 오히려 에러가 난다.
+-->
+<mapper namespace="User05">
+	<insert id="addUser" parameterType="user">
+		INSERT
+		INTO users(user_id, user_name, password, age, grade, reg_date)
+		VALUES(
+			#{userId},
+			#{userName},
+			#{password},
+			#{age},
+			#{grade},
+			#{regDate} 
+			)
+	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		UPDATE 
+		users
+		SET user_name=#{userName}
+		WHERE user_id=#{userId}
+	</update>
+	
+	<delete id="removeUser" parameterType="string">
+		DELETE
+		FROM users
+		WHERE user_id=#{value}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
