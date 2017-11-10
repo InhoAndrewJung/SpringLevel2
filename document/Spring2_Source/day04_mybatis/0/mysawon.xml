@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace라는 속성을 반드시 줘야한다.	
+	 sql query문을 메타데이타화 시킨 파일
+ -->
+<mapper namespace="haha">
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

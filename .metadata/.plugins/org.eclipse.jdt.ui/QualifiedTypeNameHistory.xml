@@ -17,8 +17,10 @@
 <fullyQualifiedTypeName name="spring.service.user.SqlService"/>
 <fullyQualifiedTypeName name="config.FactoryService"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
-<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="vo.MySawonVO"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
+<fullyQualifiedTypeName name="ibatis.services.domain.User"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+<fullyQualifiedTypeName name="ibatis.services.user.UserDAO"/>
 </qualifiedTypeNameHistroy>
